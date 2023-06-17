@@ -3,9 +3,6 @@ const express = require('express');
 const respuesta = require('../../red/respuestas');
 const controlador = require('./controlador');
 
-//const { agregar } = require('../../DB/mysql');
-//const { route } = require('../../app');
-//const { eliminar } = require('../../DB/mysql');
 
 const router=express.Router();
 
@@ -38,10 +35,11 @@ async function agregar (req, res, next){
     try{
         const items = await controlador.agregar(req.body);
         if(req.body.id == 0){
-            respuesta.success(req, res, mensaje, 200)
+            mensaje = 'Item guardado con exito';
         }else{
             respuesta.error(req, res, 'item ya existe', 500)
         }
+        respuesta.success(req, res, mensaje, 200)
     }catch(err){
         next(err);
     }
