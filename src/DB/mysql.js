@@ -34,6 +34,7 @@ function conMysql(){
 
 conMysql();
 
+
  function todos(tabla){
     return new Promise( (resolve, reject)=>{
         conexion.query(`SELECT * FROM ${tabla}`, (error,  result) =>{
@@ -53,31 +54,15 @@ conMysql();
  }
 
 
- function insertar(tabla, data){
+function agregar(tabla, data){
     return new Promise( (resolve, reject)=>{
-        conexion.query(`INSERT INTO ${tabla} SET ? `, data, (error,  result) =>{
+        conexion.query(`INSERT INTO ${tabla} SET ? ON DUPLICATE KEY UPDATE ?`, [data,data], (error,  result) =>{
             if(error) return reject(error);
             resolve(result);
         })
     });
  }
 
- function actualizar(tabla, data){
-    return new Promise( (resolve, reject)=>{
-        conexion.query(`UPDATE ${tabla} SET? WHERE id = ? `, [data,data.id], (error,  result) =>{
-            if(error) return reject(error);
-            resolve(result);
-        })
-    });
- }
-
- function agregar(tabla,data){
-    if(data && data.id ==0){
-        return insertar(tabla, data);
-    }else{
-        return 'item ya existe';
-    }
- }
 
  function eliminar(tabla, data){
     return new Promise( (resolve, reject)=>{
@@ -88,10 +73,19 @@ conMysql();
     });
  }
 
+ function query(tabla, consulta){
+    return new Promise( (resolve, reject)=>{
+        conexion.query(`SELECT * FROM ${tabla} WHERE ? `, consulta, (error,  result) =>{
+            if(error) return reject(error);
+            resolve(result[0]);
+        })
+    });
+ }
+
 module.exports={
     todos,
     uno,
     agregar,
     eliminar,
-    actualizar
+    query
 }
