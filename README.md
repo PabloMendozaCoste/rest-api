@@ -19,12 +19,12 @@ Este es un proyecto de una API para una tienda en línea. Proporciona endpoints 
 ## Endpoints
 
 ### Usuarios
-- `POST /Registrar`: Registra un nuevo usuario en la base de datos.
-- `POST /login`: Inicia sesión y devuelve un token de autenticación JWT.
+- `POST api/usuarios/Registrar`: Registra un nuevo usuario en la base de datos.
+- `POST api/auth/login`: Inicia sesión y devuelve un token de autenticación JWT.
 
 ### Productos
-- `GET /productos`: Obtiene todos los productos.
-- `GET /productos/:id`: Obtienes un producto.
-- `POST /productos`: Crea un nuevo producto.
-- `DELETE /productos/:id`: Elimina un producto por su ID.
-- `PUT /productos/`: Actualiza un producto existente por su ID.
+- `GET /api/productos`: Obtiene todos los productos.
+- `GET /api/productos:id`: Obtienes un producto.
+- `POST /api/productos`: Crea un nuevo producto.
+- `DELETE /api/productos`: Elimina un producto por su ID.
+- `PUT /api/productos`: Actualiza un producto existente por su ID.
