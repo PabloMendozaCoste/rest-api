@@ -19,7 +19,7 @@ app.set('port', config.app.port)
 //Rutas
 app.use('/productos',productos);
 app.use('/usuarios',usuarios);
-app.use('/api/auth',auth);
+app.use('/auth',auth);
 app.use(error);
 
 module.exports = app;
