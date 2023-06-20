@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true}));
 app.set('port', config.app.port)
 
 //Rutas
-app.use('/api/productos',productos);
-app.use('/api/usuarios',usuarios);
+app.use('/productos',productos);
+app.use('/usuarios',usuarios);
 app.use('/api/auth',auth);
 app.use(error);
 
