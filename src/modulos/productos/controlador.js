@@ -1,31 +1,78 @@
+<<<<<<< HEAD
+const db = require('../../db/mysql');
+
+const TABLA ='productos';
+
+
+module.exports = function(dbInyectada){
+
+    let db = dbInyectada;
+
+    if(!db){
+        db = require('../../db/mysql');
+    }
+
+    function todos(){
+        return db.todos(TABLA);
+    }
+    
+    function uno(id){
+        return db.uno(TABLA,id);
+    }
+    
+    function eliminar(body){
+        return db.eliminar(TABLA,body);
+    }
+    
+    function agregar(body){
+        return db.agregar(TABLA,body);
+    }
+    
+    return{
+        todos,
+        uno,
+        eliminar,
+        agregar
+    }
+
+    
+=======
 const db = require('../../DB/mysql');
 
 const TABLA ='productos';
 
-function todos(){
-    return db.todos(TABLA);
-}
 
-function uno(id){
-    return db.uno(TABLA,id);
-}
+module.exports = function(dbInyectada){
 
-function eliminar(body){
-    return db.eliminar(TABLA,body);
-}
+    let db = dbInyectada;
 
-function agregar(body){
-    return db.agregar(TABLA,body);
-}
+    if(!db){
+        db = require('../../DB/mysql');
+    }
 
-function actualizar(body){
-    return db.actualizar(TABLA,body);
-}
+    function todos(){
+        return db.todos(TABLA);
+    }
+    
+    function uno(id){
+        return db.uno(TABLA,id);
+    }
+    
+    function eliminar(body){
+        return db.eliminar(TABLA,body);
+    }
+    
+    function agregar(body){
+        return db.agregar(TABLA,body);
+    }
+    
+    return{
+        todos,
+        uno,
+        eliminar,
+        agregar
+    }
 
-module.exports={
-    todos,
-    uno,
-    eliminar,
-    agregar,
-    actualizar
+    
+>>>>>>> c2e7427057ffea9d09b8e5e22ef24f6556e16ed4
 }
