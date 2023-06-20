@@ -1,10 +1,6 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const seguridad = require('./seguridad');
 const respuesta = require('../../red/respuestas');
 const controlador = require('./index');
-
-
 
 const router=express.Router();
 

@@ -1,22 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
-//const cors= require('cors');
-const config = require('./config');
 
+const config = require('./config');
 const productos = require('./modulos/productos/rutas')
 const usuarios = require('./modulos/usuarios/rutas')
 const auth = require('./modulos/auth/rutas')
 const error = require('./red/errors');
-
 const app= express();
-
-/**
- var corsOption = {
-    origin: '*',
-    optionsSuccessStatus:200
- } 
- 
- */
 
 //Middleware
 app.use(morgan('dev'));
