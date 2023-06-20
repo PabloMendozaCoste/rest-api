@@ -1,4 +1,4 @@
-const db = require('../../DB/mysql');
+const db = require('../../db/mysql');
 
 const TABLA ='productos';
 
@@ -8,7 +8,7 @@ module.exports = function(dbInyectada){
     let db = dbInyectada;
 
     if(!db){
-        db = require('../../DB/mysql');
+        db = require('../../db/mysql');
     }
 
     function todos(){

@@ -1,7 +1,7 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Este es un proyecto de una API para una tienda en línea. Proporciona endpoints para gestionar productos y usuarios, incluyendo registro, inicio de sesión y operaciones CRUD en productos.",
   "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js"

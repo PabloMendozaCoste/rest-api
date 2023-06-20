@@ -7,25 +7,26 @@ module.exports = function(dbInyectada){
     let db = dbInyectada;
 
     if(!db){
-        db = require('../../DB/mysql');
+        db = require('../../db/mysql');
     }
       
+    // Función para realizar el inicio de sesión
     async function login(usuario, password){
         const data = await db.query(TABLA, {usuario: usuario});
 
         return bcrypt.compare(password, data.password)
         .then(resultado =>{
             if(resultado ===true){
-
+                // Si la contraseña coincide, se asigna un token de autenticación
                 return auth.asignarToken({...data})
-
             }else{
+                // Si la contraseña no coincide, se lanza un error
                 throw new Error('Informacion Invalidad')
             }
         })
     }
 
-
+    // Función para agregar un nuevo registro de autenticación
     async function agregar(data){
 
         const authData={
@@ -37,6 +38,7 @@ module.exports = function(dbInyectada){
         }
 
         if(data.password){
+            // Se utiliza bcrypt para hashear la contraseña antes de almacenarla
             authData.password = await bcrypt.hash( data.password.toString(),5);
         }
         
@@ -48,5 +50,4 @@ module.exports = function(dbInyectada){
         login
     }
 
-    
 }
